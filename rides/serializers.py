@@ -14,6 +14,7 @@ class RideSerializer(serializers.ModelSerializer):
     driver = serializers.PrimaryKeyRelatedField(queryset=User.objects.filter(role='driver'))
 
     todays_ride_events = RideEventInfoSerializer(many=True, source='ride_events', read_only=True)
+    distance = serializers.FloatField(read_only=True)
 
     class Meta:
         model = Ride
